@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">copy mooc</string>
+    <string name="menu_color">change Color</string>
+    <string name="menu_size">change Size</string>
+    <string name="menu_test">Test</string>
+</resources>
