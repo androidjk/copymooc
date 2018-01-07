@@ -22,9 +22,12 @@ public class Time extends Dialog implements NumberPicker.OnValueChangeListener,N
     private NumberPicker np_day;
     private TextView tv_title;
     static String month,year,day;
+    static int teshu_month,teshu_year;
     static int new_year=1,new_month=1,new_day=1;
-    String a[]={"January","February","三月","四月","May","June","July","August","November","December",
-            "十一月","十二月"};
+    static int zhou;
+    String a[]={"January","February","March","April","May","June","July","August","September","October",
+            "November","December"};
+    String b[]={"Sun.","Mon.","Tue.","Wed.","Thur.","Fri.","Sta."};
     public Time(@NonNull Context context) {
         super(context);
         setContentView(R.layout.time);
@@ -54,6 +57,28 @@ public class Time extends Dialog implements NumberPicker.OnValueChangeListener,N
         np_month.setMinValue(0);
 //        np_month.setValue(0);
         //月
+        month=a[np_month.getValue()];
+        new_day=np_day.getValue();
+        new_year=np_year.getValue();
+        calculateWeek();
+        tv_title.setText(b[zhou]+","+month+"."+new_day+","+new_year);
+    }
+    public void calculateWeek(){
+        if (new_month==0){
+            teshu_month=12;
+            teshu_year=new_year-1;
+        }else if (new_month==1){
+            teshu_month=1;
+            teshu_year=new_year-1;
+        }else {
+            teshu_month=new_month;
+            teshu_year=new_year;
+        }
+        zhou=teshu_year%100+teshu_year%100/4+teshu_year/100/4-2*(new_year/100)+26*(teshu_month+2)/10+new_day-1;
+        if (zhou<0){
+            zhou=0-zhou;
+        }
+        zhou=zhou%7;
     }
     public String format(int value) {
         String tmpStr = String.valueOf(value);
@@ -89,6 +114,37 @@ public class Time extends Dialog implements NumberPicker.OnValueChangeListener,N
         Log.d("测试",month);
         new_day=np_day.getValue();
         new_year=np_year.getValue();
-        tv_title.setText(month+"."+new_day+","+new_year);
+        switch (new_month){
+            case 0:
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 9:
+            case 11:
+                np_day.setMaxValue(31);
+                np_day.setMinValue(1);
+                break;
+            case 1:
+                if ((new_year%4==0&&new_year%100!=0)||(new_year%4==0&&new_year%400==0)){
+                    np_day.setMaxValue(29);
+                    np_day.setMinValue(1);
+                }else {
+                    np_day.setMaxValue(28);
+                    np_day.setMinValue(1);
+                }
+                break;
+            case 3:
+            case 5:
+            case 8:
+            case 10:
+                np_day.setMaxValue(30);
+                np_day.setMinValue(1);
+                break;
+            default:
+                break;
+        }
+        calculateWeek();
+        tv_title.setText(b[zhou]+","+month+"."+new_day+","+new_year);
     }
 }
