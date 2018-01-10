@@ -15,26 +15,26 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener{
-    private Button bt_time;
+//    private Button bt_time;
     @Override
     protected void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
         initViews();
-        bt_time.setOnClickListener(this);
+//        bt_time.setOnClickListener(this);
     }
 
     private void initViews() {
-        bt_time=(Button)findViewById(R.id.bt_time);
+//        bt_time=(Button)findViewById(R.id.bt_time);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.bt_time:
-                Time time=new Time(this);
-                time.show();
-                break;
-        }
+//        switch (view.getId()){
+//            case R.id.bt_time:
+//                Time time=new Time(this);
+//                time.show();
+//                break;
+//        }
     }
 }
