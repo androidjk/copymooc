@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!--<Button-->
         <!--android:id="@+id/bt_time"-->
@@ -13,20 +14,18 @@
         <!--android:layout_height="wrap_content" />-->
     <fragment
         android:id="@+id/left_fragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:name="com.example.copymooc.LeftFragment"
-        tools:layout="@layout/activity_left_fragment">
+        tools:layout="@layout/activity_left_fragment"/>
 
-    </fragment>
     <fragment
         android:id="@+id/right_fragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:name="com.example.copymooc.RightFragment"
-        tools:layout="@layout/activity_right_fragment">
+        tools:layout="@layout/activity_right_fragment"/>
 
-    </fragment>
 </LinearLayout>
