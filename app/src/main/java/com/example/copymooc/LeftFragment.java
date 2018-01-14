@@ -11,5 +11,6 @@ public class LeftFragment extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstance){
         View view=layoutInflater.inflate(R.layout.activity_left_fragment,viewGroup,false);
         return view;
+        //在家的第二天，没有学习，但我要git
     }
 }
